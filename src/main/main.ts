@@ -58,9 +58,11 @@ function createMainWindow() {
     mainWindow = new BrowserWindow({
         width: 860,
         height: 600,
+        resizable: false,
         backgroundColor: '#202020',
-        show: false,
+        show: true,
         autoHideMenuBar: true,
+        frame: true,
         icon: path.resolve('assets/favicon.ico'),
         webPreferences: {
             nodeIntegration: false,
