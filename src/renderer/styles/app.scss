@@ -1,75 +1,88 @@
 @import './reset.scss';
 
 body {
-  background-color: #1a1a1a;
-  color: #dfe5ff;
+    background-color: #1a1a1a;
+    color: #dfe5ff;
 }
 
 html,
 body,
 #app {
-  height: 100%;
+    height: 100%;
+    user-select: none;
 }
 
 #app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon {
-  width: 200px;
-  height: 200px;
-  background-color: rgb(35 35 38);
-  border-radius: 50%;
-  padding: 1.5rem;
-  box-shadow: 0 0 4px rgb(0 0 0 / 18%);
-  margin: 0 auto;
-  animation: pulse 2s infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {
-  text-align: center;
-  margin: 1rem 0;
-  font-size: 2.5rem;
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 2.5rem;
 }
 
-.teaser {
-  font-size: 18px;
-  color: gray;
-  text-align: center;
-
-  &.light {
-    margin-top: 5px;
-
-  }
-
-  span {
-    background: rgb(48, 48, 48);
-    padding: 3px 8px;
-    border-radius: 4px;
-    color: #a2a2aa;
-    font-size: 17px;
-  }
+#app:hover .menubar {
+    display: block;
+    opacity: 0.7;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(0.85);
-  }
-  5% {
-    transform: scale(0.9);
-  }
-  10% {
-    transform: scale(0.85);
-  }
-  15% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.85);
-  }
-  100% {
-    transform: scale(0.85);
-  }
+.menubar {
+    display: none;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.diagostics-form {
+    width: 100%;
+}
+
+.settings-form {
+    background-color: #3f3f49;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    z-index: 1;
+
+    padding: 1rem 0.8rem;
+}
+
+.settings-form button {
+    margin: 0.2rem 0;
+    width: 10rem;
+
+    transition-property: color, background-color, border-color,
+        text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.settings-form button:hover {
+    background-color: #b7b7c6;
+}
+
+.diagnostics-form {
+    padding: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3f3f49;
+}
+
+.close-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
 }

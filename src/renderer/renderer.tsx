@@ -8,7 +8,7 @@ console.log('[EVite] : renderer executed');
 
 // Render application
 createRoot(document.getElementById('app') as HTMLElement).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+    <StrictMode>
+        <App />
+    </StrictMode>,
 );
