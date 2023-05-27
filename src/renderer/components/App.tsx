@@ -3,6 +3,7 @@ import { SettingsForm } from './forms/SettingsForm';
 import { DiagnosticsForm } from './forms/DiagnosticsForm';
 import { Processor } from './Processor';
 import { Package, PackageInfo } from '$renderer/Package';
+import { Wallpaper } from './Wallpaper';
 
 interface WindowActions {
     open: () => void;
@@ -13,7 +14,7 @@ interface WindowActions {
 export interface AppContextInterface {
     settings: WindowActions;
     diagnostics: WindowActions;
-    package?: PackageInfo;
+    fetchedPackage: (pack: PackageInfo) => void;
 }
 
 export const AppContext = createContext<AppContextInterface | undefined>(
@@ -23,6 +24,7 @@ export const AppContext = createContext<AppContextInterface | undefined>(
 const App = () => {
     const [settingsOpened, setSettingsOpened] = useState<boolean>(false);
     const [diagnosticsOpened, setDiagnosticsOpened] = useState<boolean>(false);
+    const [pack, setPack] = useState<PackageInfo | undefined>(undefined);
 
     const [app] = useState<AppContextInterface>({
         settings: {
@@ -35,6 +37,7 @@ const App = () => {
             close: () => setDiagnosticsOpened(false),
             toggle: () => setDiagnosticsOpened(!diagnosticsOpened),
         },
+        fetchedPackage: (pack) => setPack(pack),
     });
 
     return (
@@ -42,6 +45,7 @@ const App = () => {
             <Processor package={Package} />
             {settingsOpened && <SettingsForm />}
             {diagnosticsOpened && <DiagnosticsForm />}
+            <Wallpaper package={pack}/>
         </AppContext.Provider>
     );
 };

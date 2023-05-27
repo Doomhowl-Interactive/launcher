@@ -1,8 +1,6 @@
-import { useContext } from "react";
-import { AppContext } from "./App";
+import { PackageInfo } from "$renderer/Package";
+import { formImageURL } from "$renderer/PackageFetcher";
 
-export function Wallpaper() {
-    const app = useContext(AppContext);
-
-    return app?.package?.image ? (<img src={app.package.image} className='wallpaper' />):<></>;
+export function Wallpaper(props: {package?: PackageInfo}) {
+    return props.package?.image ? (<img src={formImageURL(props.package)} className='wallpaper' />):<></>;
 }
