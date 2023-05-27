@@ -63,10 +63,10 @@ function createMainWindow() {
         autoHideMenuBar: true,
         icon: path.resolve('assets/favicon.ico'),
         webPreferences: {
-            nodeIntegration: true,
+            nodeIntegration: false,
             contextIsolation: true,
-            preload: path.join(__dirname, 'preload.ts'),
-            sandbox: false,
+            preload: path.join(__dirname, 'preload.js'),
+            sandbox: true,
         },
     });
 

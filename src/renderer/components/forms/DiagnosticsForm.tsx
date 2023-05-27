@@ -23,7 +23,7 @@ export function DiagnosticsForm() {
             <table>
                 <tbody>
                     {Object.entries(diagn).map(([key, value]) => (
-                        <tr>
+                        <tr key={key}>
                             <td>{key}</td>
                             <td>{value as string}</td>
                         </tr>

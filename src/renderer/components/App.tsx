@@ -1,7 +1,8 @@
 import { createContext, useState } from 'react';
-import { MenuBar } from './menubar/MenuBar';
 import { SettingsForm } from './forms/SettingsForm';
 import { DiagnosticsForm } from './forms/DiagnosticsForm';
+import { Processor } from './Processor';
+import { Package } from '$renderer/Package';
 
 interface WindowActions {
     open: () => void;
@@ -37,12 +38,9 @@ const App = () => {
 
     return (
         <AppContext.Provider value={app}>
-            <div>
-                <MenuBar />
-                <h1>Downloading...</h1>
-                {settingsOpened && <SettingsForm />}
-                {diagnosticsOpened && <DiagnosticsForm />}
-            </div>
+            <Processor package={Package} />
+            {settingsOpened && <SettingsForm />}
+            {diagnosticsOpened && <DiagnosticsForm />}
         </AppContext.Provider>
     );
 };

@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 os: process.platform,
                 arch: process.arch,
                 env: process.env.NODE_ENV,
-                appPath: process.cwd(),
             }),
         );
     } else {
