@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 import { SettingsForm } from './forms/SettingsForm';
 import { DiagnosticsForm } from './forms/DiagnosticsForm';
 import { Processor } from './Processor';
-import { Package } from '$renderer/Package';
+import { Package, PackageInfo } from '$renderer/Package';
 
 interface WindowActions {
     open: () => void;
@@ -13,6 +13,7 @@ interface WindowActions {
 export interface AppContextInterface {
     settings: WindowActions;
     diagnostics: WindowActions;
+    package?: PackageInfo;
 }
 
 export const AppContext = createContext<AppContextInterface | undefined>(

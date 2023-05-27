@@ -41,6 +41,13 @@ h1 {
     margin-bottom: 1.0rem;
 }
 
+.processor span {
+    text-align: left;
+    margin-left: 0.2rem;
+    display: inline-block;
+    width: 0;
+}
+
 .menubar {
     display: none;
     padding: 1rem;

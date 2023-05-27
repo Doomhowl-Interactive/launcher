@@ -8,6 +8,19 @@ interface AppInfo {
     version: string;
 }
 
+function StateText(props: { prefix: string }) {
+    const [dots, setDots] = useState<number>(0);
+
+    useEffect(() => {
+        const int = setInterval(() => {
+            setDots((dots) => (dots + 1) % 4);
+        }, 500);
+        return () => clearInterval(int);
+    }, []);
+
+    return <h2>{props.prefix}<span>{'.'.repeat(dots)}</span></h2>;
+}
+
 export function Processor(props: { package: string }) {
     const [info, setInfo] = useState<AppInfo | undefined>(undefined);
 
@@ -21,8 +34,8 @@ export function Processor(props: { package: string }) {
     return (
         <div className='processor'>
             <MenuBar />
-            <h1>{info ? info.displayName : '...'}</h1>
-            <h2>Downloading</h2>
+            {info && <h1>{info.displayName}</h1>}
+            <StateText prefix='Downloading' />
             <LoadingIcons.TailSpin />
         </div>
     );
